@@ -21,14 +21,24 @@ function Expenses(props) {
         selected={filteredYear}
         selectedYearForFilter={selectedYearForFilter}
       />
-      {filteredExpenses.map((filteredExpense) => (
+      {filteredExpenses.length === 0
+        ? "No expenses found"
+        : filteredExpenses.map((filteredExpense) => (
+            <ExpenseItem
+              key={filteredExpense.id} // must be unique for each item
+              title={filteredExpense.title}
+              amount={filteredExpense.amount}
+              date={filteredExpense.date}
+            />
+          ))}
+      {/* {filteredExpenses.map((filteredExpense) => (
         <ExpenseItem
           key={filteredExpense.id} // must be unique for each item
           title={filteredExpense.title}
           amount={filteredExpense.amount}
           date={filteredExpense.date}
         />
-      ))}
+      ))} */}
       {/* <ExpenseItem
         title={props.expenses[0].title}
         amount={props.expenses[0].amount}
